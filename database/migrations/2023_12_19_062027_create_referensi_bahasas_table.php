@@ -1,0 +1,29 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('referensi_bahasas', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('kode_bahasa', 10)->comment('Kode Bahasa');
+            $table->string('nama_bahasa', 50)->unique()->comment('Nama Bahasa');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('referensi_bahasas');
+    }
+};
